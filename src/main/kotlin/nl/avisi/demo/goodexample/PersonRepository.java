@@ -25,10 +25,10 @@ public class PersonRepository {
 
     public List<Person> getAll() {
         try {
-            return repositoryUtil.get("/api", type) //
-                    .getResults() //
-                    .stream() //
-                    .map(mapper::fromRest) //
+            return repositoryUtil.get("/api", type)
+                    .getResults()
+                    .stream()
+                    .map(mapper::fromRest)
                     .collect(Collectors.toList());
         } catch (UpstreamUnavailableException e) {
             log.error("Unable to getAll()", e);

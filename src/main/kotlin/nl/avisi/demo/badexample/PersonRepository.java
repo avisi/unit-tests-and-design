@@ -36,10 +36,10 @@ public class PersonRepository extends RandomUserBaseRepository {
 
     public List<Person> getAll() {
         try {
-            return get("/api", type) //
-                    .getResults() //
-                    .stream() //
-                    .map(PersonMapper::fromRest) //
+            return get("/api", type)
+                    .getResults()
+                    .stream()
+                    .map(PersonMapper::fromRest)
                     .collect(Collectors.toList());
         } catch (UpstreamUnavailableException e) {
             log.error("Unable to getAll()", e);

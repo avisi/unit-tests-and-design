@@ -15,8 +15,8 @@ import nl.avisi.demo.model.Person;
 @ExtendWith(MockitoExtension.class)
 public class PersonControllerTest {
     @Test
-    public void testGetAll(//
-            @Mock PersonService service, //
+    public void testGetAll(
+            @Mock PersonService service,
             @Mock List<Person> personList) {
         var sut = new PersonController(service);
         Mockito.when(service.getAll()).thenReturn(personList);
