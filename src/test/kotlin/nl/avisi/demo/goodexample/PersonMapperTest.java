@@ -14,10 +14,10 @@ import nl.avisi.demo.rest.Person.Name;
 public class PersonMapperTest {
     @Test
     void checkFromRest() {
-        final var sut = new PersonMapper();
-        final var input =
+        var sut = new PersonMapper();
+        var input =
                 new Person(Gender.MALE, new Name("title", "first", "last"));
-        final var output = new nl.avisi.demo.model.Person(true, "first last");
+        var output = new nl.avisi.demo.model.Person(true, "first last");
         assertEquals(output, sut.fromRest(input));
     }
 }

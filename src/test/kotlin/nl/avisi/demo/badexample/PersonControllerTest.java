@@ -16,9 +16,9 @@ import nl.avisi.demo.model.Person;
 public class PersonControllerTest {
     @Test
     public void testGetAll(//
-            final @Mock PersonService service, //
-            final @Mock List<Person> personList) {
-        final var sut = new PersonController(service);
+            @Mock PersonService service, //
+            @Mock List<Person> personList) {
+        var sut = new PersonController(service);
         Mockito.when(service.getAll()).thenReturn(personList);
         assertEquals(personList, sut.getAll());
         Mockito.verify(service).getAll();

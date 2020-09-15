@@ -18,10 +18,12 @@ import nl.avisi.demo.rest.ResultContainer;
 public class PersonRepository {
     private final PersonMapper mapper;
     private final RandomUserRepositoryUtil repositoryUtil;
+    
+
+    private static final ParameterizedTypeReference<ResultContainer> type = new ParameterizedTypeReference<ResultContainer>() {
+    };
 
     public List<Person> getAll() {
-        final var type = new ParameterizedTypeReference<ResultContainer>() {
-        };
         try {
             return repositoryUtil.get("/api", type) //
                     .getResults() //

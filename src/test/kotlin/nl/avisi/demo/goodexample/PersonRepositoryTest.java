@@ -18,12 +18,13 @@ import nl.avisi.demo.rest.ResultContainer;
 @ExtendWith(MockitoExtension.class)
 public class PersonRepositoryTest {
     @Test
-    void happyFlow(final @Mock PersonMapper personMapper,
-            final @Mock RandomUserRepositoryUtil repositoryUtil,
-            final @Mock ResultContainer resultContainer,
-            final @Mock nl.avisi.demo.rest.Person restPerson,
-            final @Mock Person person) {
-        final var sut = new PersonRepository(personMapper, repositoryUtil);
+    void happyFlow(
+            @Mock PersonMapper personMapper,
+            @Mock RandomUserRepositoryUtil repositoryUtil,
+            @Mock ResultContainer resultContainer,
+            @Mock nl.avisi.demo.rest.Person restPerson,
+            @Mock Person person) {
+        var sut = new PersonRepository(personMapper, repositoryUtil);
         Mockito.when(repositoryUtil.get(Mockito.anyString(), Mockito.any()))
                 .thenReturn(resultContainer);
         Mockito.when(resultContainer.getResults())
@@ -34,9 +35,10 @@ public class PersonRepositoryTest {
     }
 
     @Test
-    void unhappyFlow(final @Mock PersonMapper personMapper,
-            final @Mock RandomUserRepositoryUtil repositoryUtil) {
-        final var sut = new PersonRepository(personMapper, repositoryUtil);
+    void unhappyFlow(
+            @Mock PersonMapper personMapper,
+            @Mock RandomUserRepositoryUtil repositoryUtil) {
+        var sut = new PersonRepository(personMapper, repositoryUtil);
         Mockito.when(repositoryUtil.get(Mockito.anyString(), Mockito.any()))
                 .thenThrow(new UpstreamUnavailableException(""));
 

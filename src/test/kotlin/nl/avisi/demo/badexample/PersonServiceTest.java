@@ -15,10 +15,10 @@ import nl.avisi.demo.model.Person;
 @ExtendWith(MockitoExtension.class)
 public class PersonServiceTest {
     @Test
-    void checkGetAllDelegates(//
-            final @Mock PersonRepository personRepository, //
-            final @Mock List<Person> mockPersonList) {
-        final var sut = new PersonService(personRepository);
+    void checkGetAllDelegates(
+            @Mock PersonRepository personRepository,
+            @Mock List<Person> mockPersonList) {
+        var sut = new PersonService(personRepository);
         Mockito.when(personRepository.getAll()).thenReturn(mockPersonList);
         assertEquals(mockPersonList, sut.getAll());
     }

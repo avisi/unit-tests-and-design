@@ -27,41 +27,37 @@ import nl.avisi.demo.rest.Person.Name;
 public class PersonRepositoryTest {
 
     @Test
-    public void testGetAllHappyFlow(//
-            final @Mock RestTemplate restTemplate, //
-            final @Mock BaseConfig baseConfig,
-            final @Mock ResponseEntity<ResultContainer> response,
-            final @Mock ResultContainer resultContainer) {
-        final var sut = new PersonRepository(restTemplate, baseConfig);
+    public void testGetAllHappyFlow(
+            @Mock RestTemplate restTemplate,
+            @Mock BaseConfig baseConfig,
+            @Mock ResponseEntity<ResultContainer> response,
+            @Mock ResultContainer resultContainer) {
+        var sut = new PersonRepository(restTemplate, baseConfig);
         Mockito.when(restTemplate.exchange(
-                // Specify generic types, to disambiguate (choose correct
-                // overload) the overloaded exchange method.
                 Mockito.<RequestEntity<Void>>any(),
                 Mockito.<ParameterizedTypeReference<ResultContainer>>any()))
                 .thenReturn(response);
         Mockito.when(response.getStatusCode()).thenReturn(HttpStatus.OK);
         Mockito.when(response.getBody()).thenReturn(resultContainer);
 
-        final var list = Collections.singletonList(
+        var list = Collections.singletonList(
                 new Person(Gender.MALE, new Name("title", "first", "last")));
 
         Mockito.when(resultContainer.getResults()).thenReturn(list);
-        final var reference = Collections.singletonList(
+        var reference = Collections.singletonList(
                 new nl.avisi.demo.model.Person(true, "first last"));
 
         assertEquals(reference, sut.getAll());
     }
 
     @Test
-    public void testGetAllUnhappyFlow(//
-            final @Mock RestTemplate restTemplate, //
-            final @Mock BaseConfig baseConfig,
-            final @Mock ResponseEntity<ResultContainer> response,
-            final @Mock ResultContainer resultContainer) {
-        final var sut = new PersonRepository(restTemplate, baseConfig);
+    public void testGetAllUnhappyFlow(
+            @Mock RestTemplate restTemplate,
+            @Mock BaseConfig baseConfig,
+            @Mock ResponseEntity<ResultContainer> response,
+            @Mock ResultContainer resultContainer) {
+        var sut = new PersonRepository(restTemplate, baseConfig);
         Mockito.when(restTemplate.exchange(
-                // Specify generic types, to disambiguate (choose correct
-                // overload) the overloaded exchange method.
                 Mockito.<RequestEntity<Void>>any(),
                 Mockito.<ParameterizedTypeReference<ResultContainer>>any()))
                 .thenReturn(response);

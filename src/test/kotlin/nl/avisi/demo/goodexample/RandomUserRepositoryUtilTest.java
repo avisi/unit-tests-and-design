@@ -20,16 +20,14 @@ import nl.avisi.demo.badexample.RandomUserBaseRepository.BaseConfig;
 @ExtendWith(MockitoExtension.class)
 public class RandomUserRepositoryUtilTest {
     @Test
-    void checkGetWithStatusOK(//
-            final @Mock RestTemplate restTemplate,
-            final @Mock BaseConfig baseConfig,
-            final @Mock ParameterizedTypeReference<Object> type,
-            final @Mock ResponseEntity<Object> response,
-            final @Mock Object mockBody) {
-        final var sut = new RandomUserRepositoryUtil(restTemplate, baseConfig);
+    void checkGetWithStatusOK(
+            @Mock RestTemplate restTemplate,
+            @Mock BaseConfig baseConfig,
+            @Mock ParameterizedTypeReference<Object> type,
+            @Mock ResponseEntity<Object> response,
+            @Mock Object mockBody) {
+        var sut = new RandomUserRepositoryUtil(restTemplate, baseConfig);
         Mockito.when(restTemplate.exchange(
-                // Specify generic types, to disambiguate (choose correct
-                // overload) the overloaded exchange method.
                 Mockito.<RequestEntity<Void>>any(),
                 Mockito.<ParameterizedTypeReference<Object>>any()))
                 .thenReturn(response);
@@ -39,16 +37,14 @@ public class RandomUserRepositoryUtilTest {
     }
 
     @Test
-    void checkGetWithStatusServerError(//
-            final @Mock RestTemplate restTemplate,
-            final @Mock BaseConfig baseConfig,
-            final @Mock ParameterizedTypeReference<Object> type,
-            final @Mock ResponseEntity<Object> response,
-            final @Mock Object mockBody) {
-        final var sut = new RandomUserRepositoryUtil(restTemplate, baseConfig);
+    void checkGetWithStatusServerError(
+            @Mock RestTemplate restTemplate,
+            @Mock BaseConfig baseConfig,
+            @Mock ParameterizedTypeReference<Object> type,
+            @Mock ResponseEntity<Object> response,
+            @Mock Object mockBody) {
+        var sut = new RandomUserRepositoryUtil(restTemplate, baseConfig);
         Mockito.when(restTemplate.exchange(
-                // Specify generic types, to disambiguate (choose correct
-                // overload) the overloaded exchange method.
                 Mockito.<RequestEntity<Void>>any(),
                 Mockito.<ParameterizedTypeReference<Object>>any()))
                 .thenReturn(response);

@@ -27,14 +27,14 @@ import nl.avisi.demo.rest.ResultContainer;
 @Slf4j
 @Repository("badExamplePersonRepository")
 public class PersonRepository extends RandomUserBaseRepository {
-    public PersonRepository(final RestTemplate restTemplate,
-            final BaseConfig config) {
+    public PersonRepository(final RestTemplate restTemplate, final BaseConfig config) {
         super(restTemplate, config);
     }
+    
+    private static final ParameterizedTypeReference<ResultContainer> type = new ParameterizedTypeReference<ResultContainer>() {
+    };
 
     public List<Person> getAll() {
-        final var type = new ParameterizedTypeReference<ResultContainer>() {
-        };
         try {
             return get("/api", type) //
                     .getResults() //
