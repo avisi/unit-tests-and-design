@@ -11,10 +11,10 @@ import nl.avisi.demo.rest.Person.Gender;
 import nl.avisi.demo.rest.Person.Name;
 
 @ExtendWith(MockitoExtension.class)
-public class PersonMapperTest {
+public class PersonMapperImplTest {
     @Test
     void checkFromRest() {
-        var sut = new PersonMapper();
+        var sut = new PersonMapperImpl();
         var input =
                 new Person(Gender.MALE, new Name("title", "first", "last"));
         var output = new nl.avisi.demo.model.Person(true, "first last");
